@@ -1,6 +1,41 @@
+<div align="center">
+
+![Universidad Peruana de Ciencias Aplicadas](https://static.wikia.nocookie.net/logopedia/images/2/2d/UPC-Logo-Actual.png/revision/latest/scale-to-width-down/384?cb=20230305155749&path-prefix=es)
+
+</div>
+
+
 # **1. Introduccion**
 
 # **2. Integrantes**
+
+  <table border="1px" align="center">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Código</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Antonio Francisco Datto Aponte</td>
+            <td>u202017033</td>
+        </tr>
+        <tr>
+            <td>Edison Jean Franco Coaguila Fuentes</td>
+            <td>u202213102</td>
+        </tr>
+        <tr>
+            <td>Luis Enrique Zegarra Garcia</td>
+            <td>u202123273</td>
+        </tr>
+        <tr>
+            <td>Joe Maicol Turpo Queque</td>
+            <td>u202124254</td>
+        </tr>
+    </tbody>
+</table>
+
 
 # **3. Problema elegido**
 
