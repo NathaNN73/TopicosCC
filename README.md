@@ -186,3 +186,7 @@ Total soluciones encontradas: 5
 - Este problema tiene 5 combinaciones que satisfacen las restricciones. 
 
 ## **4.5 Conclusiones**
+
+El problema del matrimonio estable fue modelado exitosamente como un Problema de Satisfacción de Restricciones (CSP) utilizando la librería OR-Tools y el solver CP-SAT. A través del modelado de variables, dominios y restricciones lógicas, se logró representar adecuadamente las condiciones de estabilidad y preferencia entre los participantes.
+
+Los resultados muestran que existen cinco emparejamientos estables que cumplen tanto la condición de estabilidad como la restricción adicional impuesta, donde cada mujer se empareja con un hombre dentro de sus cuatro primeras preferencias. Esto evidencia la capacidad del modelo para explorar exhaustivamente el espacio de soluciones y encontrar todas las combinaciones válidas bajo las condiciones planteadas.
