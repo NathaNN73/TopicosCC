@@ -44,6 +44,36 @@ En el presente trabajo se aborda la resolución de uno de los problemas incluido
 
 ## **3. Problema elegido**
 
+El problema abordado en este trabajo es el Problema del Matrimonio Estable (Stable Marriage Problem). Este problema es un ejemplo clásico de un Problema de Satisfacción de Restricciones (CSP) que busca encontrar un emparejamiento entre dos grupos de igual tamaño que satisfaga condiciones específicas de estabilidad.
+
+El escenario base involucra a un grupo de 6 hombres y un grupo de 6 mujeres
+
+#### Preferencias
+Cada hombre ha clasificado a las 6 mujeres en orden de preferencia, y de manera análoga, cada mujer ha clasificado a los 6 hombres. Las preferencias se almacenan en matrices numéricas donde un número menor indica una mayor preferencia.
+
+![alt text](images/preferenceOrdersOfMen.png)
+![alt text](images/preferenceOrdersOfWomen.png)
+
+#### Matrimonio
+Un matrimonio se define como un conjunto de 6 parejas tal que cada hombre se casa exactamente con una mujer, y cada mujer se casa exactamente con un hombre.
+
+#### Estabilidad
+Un emparejamiento es inestable si existen dos parejas (m, w) y (m0, w0) tal que:
+
+- m prefiere a w0 por encima de su pareja actual (w) , y
+
+- w0 prefiere a m por encima de su pareja actual (m0).
+
+Si no existe tal par, el emparejamiento es estable.
+
+#### Objetivo del Proyecto
+
+El objetivo principal es modelar este problema como un CSP y resolverlo utilizando el solver CP-SAT de OR-Tools para encontrar un emparejamiento estable.
+
+#### Restriccion adicional
+Adicionalmente, se impone una restricción específica que el modelo debe verificar:
+- Se debe confirmar si existe un matrimonio estable tal que cada mujer esté casada a lo sumo con el cuarto hombre de su preferencia. Esto significa que, en la matriz de preferencias de las mujeres (tablero_w), el rank asignado al hombre emparejado debe ser 1, 2, 3 o 4, ya que las clasificaciones 5 y 6 (que son mayores a 4) indican una menor preferencia
+
 ## **4. Solucion**
 ### **4.1 Breve explicacion de la solucion**
 
