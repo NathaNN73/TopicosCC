@@ -103,6 +103,86 @@ Se definieron los siguientes elementos en la solución:
 
 ### **4.3 Reestricciones**
 
+- Definimos las restricciones en nuestro codigo agregandolas al modelo.
+
+#### Las personas deben pertenecer a solo una pareja.
+
+```python
+for m in range(6):
+    model.Add(sum(parejas[m][w] for w in range(6)) == 1)
+for w in range(6):
+    model.Add(sum(parejas[m][w] for m in range(6)) == 1)
+```
+
+#### La pareja de cada persona tiene que estar dentro de las 4 primeras de su preferencia.
+
+```python
+minRank = 4
+for w in range(6):
+    for m in range(6):
+        if tablero_w[w][m] > minRank:
+            model.Add(parejas[m][w] == 0) 
+```
+
+#### No puede haber 2 parejas (w, m) y (w0, m0) tal que m tenga mas preferencia por w0 que por w y que w0 tenga mas preferencia por m que por m0
+
+```python
+for m in range(6):
+    for w in range(6):
+        for m0 in range(6):
+            for w0 in range(6):
+                if tablero_m[m][w0] < tablero_m[m][w] and tablero_w[w0][m] < tablero_w[w0][m0]:
+                    model.Add(parejas[m][w] + parejas[m0][w0] <= 1)
+```
+
 ## **4.4 Resultados**
+
+- Mostramos los resultados usando la clase SolutionPrinter.
+
+```
+Solución 1:
+  Hombre 1  —  Mujer 4   (rank hombre: 2, rank mujer: 3)
+  Hombre 2  —  Mujer 5   (rank hombre: 4, rank mujer: 4)
+  Hombre 3  —  Mujer 2   (rank hombre: 4, rank mujer: 4)
+  Hombre 4  —  Mujer 6   (rank hombre: 1, rank mujer: 1)
+  Hombre 5  —  Mujer 3   (rank hombre: 3, rank mujer: 4)
+  Hombre 6  —  Mujer 1   (rank hombre: 1, rank mujer: 1)
+
+Solución 2:
+  Hombre 1  —  Mujer 4   (rank hombre: 2, rank mujer: 3)
+  Hombre 2  —  Mujer 3   (rank hombre: 5, rank mujer: 3)
+  Hombre 3  —  Mujer 5   (rank hombre: 5, rank mujer: 2)
+  Hombre 4  —  Mujer 6   (rank hombre: 1, rank mujer: 1)
+  Hombre 5  —  Mujer 2   (rank hombre: 5, rank mujer: 1)
+  Hombre 6  —  Mujer 1   (rank hombre: 1, rank mujer: 1)
+
+Solución 3:
+  Hombre 1  —  Mujer 4   (rank hombre: 2, rank mujer: 3)
+  Hombre 2  —  Mujer 3   (rank hombre: 5, rank mujer: 3)
+  Hombre 3  —  Mujer 2   (rank hombre: 4, rank mujer: 4)
+  Hombre 4  —  Mujer 6   (rank hombre: 1, rank mujer: 1)
+  Hombre 5  —  Mujer 5   (rank hombre: 4, rank mujer: 3)
+  Hombre 6  —  Mujer 1   (rank hombre: 1, rank mujer: 1)
+
+Solución 4:
+  Hombre 1  —  Mujer 3   (rank hombre: 4, rank mujer: 1)
+  Hombre 2  —  Mujer 4   (rank hombre: 6, rank mujer: 2)
+  Hombre 3  —  Mujer 2   (rank hombre: 4, rank mujer: 4)
+  Hombre 4  —  Mujer 6   (rank hombre: 1, rank mujer: 1)
+  Hombre 5  —  Mujer 5   (rank hombre: 4, rank mujer: 3)
+  Hombre 6  —  Mujer 1   (rank hombre: 1, rank mujer: 1)
+
+Solución 5:
+  Hombre 1  —  Mujer 3   (rank hombre: 4, rank mujer: 1)
+  Hombre 2  —  Mujer 4   (rank hombre: 6, rank mujer: 2)
+  Hombre 3  —  Mujer 5   (rank hombre: 5, rank mujer: 2)
+  Hombre 4  —  Mujer 6   (rank hombre: 1, rank mujer: 1)
+  Hombre 5  —  Mujer 2   (rank hombre: 5, rank mujer: 1)
+  Hombre 6  —  Mujer 1   (rank hombre: 1, rank mujer: 1)
+
+Total soluciones encontradas: 5
+```
+
+- Este problema tiene 5 combinaciones que satisfacen las restricciones. 
 
 ## **4.5 Conclusiones**
